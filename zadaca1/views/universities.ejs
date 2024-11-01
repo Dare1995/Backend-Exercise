@@ -1,0 +1,18 @@
+<%- include('layout') %>
+<% title = "Universities" %>
+<h2>Universities</h2>
+<form action="/api/universities" method="POST">
+    <input type="text" name="name" placeholder="University Name" required>
+    <input type="text" name="address" placeholder="Address">
+    <button type="submit">Add University</button>
+</form>
+<ul>
+    <% universities.forEach(university => { %>
+        <li>
+            <%= university.name %> - <%= university.address %>
+            <form action="/api/universities/<%= university._id %>" method="POST">
+                <button type="submit">Delete</button>
+            </form>
+        </li>
+    <% }) %>
+</ul>
